@@ -55,10 +55,6 @@ def bind_method(**config):
         objectify_response = config.get("objectify_response", True)
         exclude_format = config.get('exclude_format', False)
 
-        # Instagram subscription endpoint requires both client_id and client_secret parameters.
-        CLIENT_SECRET_PARAM = '&client_secret=9ddd8a97ea5e42a49b0fb2436b04665f'
-        CLIENT_ID_PARAM = '&client_id=6ed72b5340ee4e30a276eea424931fe8'
-
         def __init__(self, api, *args, **kwargs):
             self.api = api
             self.as_generator = kwargs.pop("as_generator", False)
@@ -185,8 +181,6 @@ def bind_method(**config):
                                                                                  self.path,
                                                                                  self.parameters,
                                                                                  include_secret=self.include_secret)
-            if body:
-                body += self.CLIENT_SECRET_PARAM + self.CLIENT_ID_PARAM
             if self.with_next_url:
                 return self._get_with_next_url(self.with_next_url, method, body, headers)
             if self.as_generator:
