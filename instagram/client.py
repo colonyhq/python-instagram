@@ -45,7 +45,6 @@ class InstagramAPI(oauth2.OAuth2API):
                 root_class=MediaShortcode,
                 exclude_format=True)
 
-
     media_likes = bind_method(
                 path="/media/{media_id}/likes",
                 accepts_parameters=['media_id'],

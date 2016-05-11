@@ -108,10 +108,14 @@ def bind_method(**config):
         def _build_pagination_info(self, content_obj):
             """Extract pagination information in the desired format."""
             pagination = content_obj.get('pagination', {})
-            if self.pagination_format == 'next_url':
-                return pagination.get('next_url')
             if self.pagination_format == 'dict':
                 return pagination
+            else:
+                if 'min_tag_id' in pagination:
+                    return pagination.get('min_tag_id')
+                if 'next_url' in pagination:
+                    return pagination.get('next_url')
+
             raise Exception('Invalid value for pagination_format: %s' % self.pagination_format)
           
         def _do_api_request(self, url, method="GET", body=None, headers=None):
