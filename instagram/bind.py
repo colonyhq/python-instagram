@@ -113,10 +113,10 @@ def bind_method(**config):
             else:
                 if 'min_tag_id' in pagination:
                     return pagination.get('min_tag_id')
-                if 'next_url' in pagination:
+                elif 'next_url' in pagination:
                     return pagination.get('next_url')
-
-            raise Exception('Invalid value for pagination_format: %s' % self.pagination_format)
+                else:
+                    return None
           
         def _do_api_request(self, url, method="GET", body=None, headers=None):
             headers = headers or {}
