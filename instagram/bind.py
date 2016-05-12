@@ -111,8 +111,8 @@ def bind_method(**config):
             if self.pagination_format == 'dict':
                 return pagination
             else:
-                if 'min_tag_id' in pagination:
-                    return pagination.get('min_tag_id')
+                if 'next_min_id' in pagination:
+                    return pagination.get('next_min_id')
                 elif 'next_url' in pagination:
                     return pagination.get('next_url')
                 else:
