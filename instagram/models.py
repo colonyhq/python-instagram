@@ -42,7 +42,7 @@ class Video(Image):
     #2017-09-27: Video media type returns a new kwarg: id
     #def __init__(self, url, width, height):
     def __init__(self, *args, **kwargs):
-        for k,v in kwargs.iteritems():
+        for k,v in kwargs.items():
             setattr(self,k,v)
         super(Image, self).__init__(*args)
 
